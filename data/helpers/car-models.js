@@ -36,4 +36,10 @@ function deleteCarById(id) {
       .delete();
   }
 
-module.exports = { getAllCars, getCarById, addNewCar, updateCarById, deleteCarById };
+  function getUniqueCarVINs() {
+    return db("cars")
+      .distinct("vin")
+      .pluck("vin");
+  }
+
+module.exports = { getAllCars, getCarById, addNewCar, updateCarById, deleteCarById, getUniqueCarVINs };
